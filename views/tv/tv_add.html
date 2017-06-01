@@ -1,0 +1,290 @@
+{% extends "../header.html" %}
+{% block header_title %} Home {% end %}
+
+{% block header_static %}
+<link rel="stylesheet" href="{{ static_url('extension/bootstrap-daterangepicker/daterangepicker.css')}}">
+{% end %}
+
+{% block page_content %}
+<div class="right_col" role="main">
+  <div class="">
+    <div class="page-title">
+      <div class="title_left">
+        <h3><i class="fa fa-film"></i> 电视剧添加</h3>
+      </div>
+    </div>
+    <div class="clearfix"></div>
+    <div class="row">
+      <div class="col-md-12 col-sm-12 col-xs-12">
+        <div class="x_panel">
+          <div class="x_title">
+            <h2>手动添加</h2>
+            <ul class="nav navbar-right panel_toolbox">
+              <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+              </li>
+              <li><a class="close-link"><i class="fa fa-close"></i></a>
+              </li>
+            </ul>
+            <div class="clearfix"></div>
+          </div>
+          <div class="x_content">
+              <div id="wizard" class="form_wizard wizard_horizontal">
+                <ul class="wizard_steps">
+                  <li>
+                    <a href="#step1">
+                      <span class="step_no">1</span>
+                      <span class="step_descr">Step1 <br/><small>添加电视剧基本信息</small></span>
+                    </a>
+                  </li>
+                  <li>
+                    <a href="#step2">
+                      <span class="step_no">2</span>
+                      <span class="step_descr">Step2 <br/><small>添加剧集播放信息</small></span>
+                    </a>
+                  </li>
+                </ul>
+                <div id="step1">
+
+                  <form id="input_box" href="/api/tv/add" \
+                        class="form-horizontal form-label-left" \
+                        method="post" \
+                        enctype="multipart/form-data">
+                    <span class="section">电视剧信息:</span>
+
+                    <div class="item form-group">
+                      <label class="control-label col-md-3 col-sm-3 col-xs-12" for="tv_id">ID: <span class="required">*</span>
+                      </label>
+                      <div class="col-md-6 col-sm-6 col-xs-12">
+                        <input id="tv_id" class="form-control col-md-7 col-xs-12" name="tv_id" placeholder="TVID"
+                               required type="text" minlength="1" maxlength="50">
+                      </div>
+                    </div>
+                    <div class="item form-group">
+                      <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">电视剧名称: <span
+                              class="required">*</span>
+                      </label>
+                      <div class="col-md-6 col-sm-6 col-xs-12">
+                        <input id="name" class="form-control col-md-7 col-xs-12" name="tv_name" placeholder="电视剧名称"
+                               type="text" data-parsley-trigger="blur change" required minlength="1" maxlength="50">
+                      </div>
+                    </div>
+                    <div class="item form-group">
+                      <label class="control-label col-md-3 col-sm-3 col-xs-12" for="score">电视剧评分: <span
+                              class="required">*</span>
+                      </label>
+                      <div class="col-md-6 col-sm-6 col-xs-12">
+                        <input id="score" class="form-control col-md-7 col-xs-12" name="tv_score"
+                               placeholder="电视剧评分"
+                               required step="any" type="number" data-parsley-trigger="blur change" min="0" max="10">
+                      </div>
+                    </div>
+                    <div class="item form-group">
+                      <label class="control-label col-md-3 col-sm-3 col-xs-12" for="category">电视剧类型: <span
+                              class="required">*</span>
+                      </label>
+                      <div class="col-md-6 col-sm-6 col-xs-12">
+                        <select class="form-control" form="input_box" name="tv_category" id="category">
+                          <option value="动作">动作</option>
+                          <option value="科幻">科幻</option>
+                          <option value="喜剧">喜剧</option>
+                          <option value="爱情">爱情</option>
+                          <option value="惊悚">惊悚</option>
+                          <option value="恐怖">恐怖</option>
+                          <option value="武侠">武侠</option>
+                        </select>
+                      </div>
+                    </div>
+                    <div class="item form-group">
+                      <label class="control-label col-md-3 col-sm-3 col-xs-12" for="single_cal4">电视剧上映日期: <span
+                              class="required">*</span>
+                      </label>
+                      <div class="col-md-6 col-sm-6 col-xs-12">
+                        <input type="text" class="form-control has-feedback-left" id="single_cal4" name="tv_born" placeholder="First Name" aria-describedby="inputSuccess2Status4">
+                        <span class="fa fa-calendar-o form-control-feedback left" aria-hidden="true"></span>
+                        <span id="inputSuccess2Status4" class="sr-only">(success)</span>
+                      </div>
+                    </div>
+                    <div class="item form-group">
+                      <label class="control-label col-md-3 col-sm-3 col-xs-12" for="performer">演员: <span
+                              class="required" >*</span>
+                      </label>
+                      <div class="col-md-6 col-sm-6 col-xs-12">
+                        <input type="text" id="performer" name="tv_performer" required
+                               class="form-control col-md-7 col-xs-12"  placeholder="演员" minlength="1" maxlength="50">
+                      </div>
+                    </div>
+                    <div class="item form-group">
+                      <label class="control-label col-md-3 col-sm-3 col-xs-12" for="area">区域: <span
+                              class="required">*</span>
+                      </label>
+                      <div class="col-md-6 col-sm-6 col-xs-12">
+                        <select class="form-control" form="input_box" name="tv_area" id="area">
+                          <option value="中国">中国</option>
+                          <option value="日本">日本</option>
+                          <option value="韩国" selected>韩国</option>
+                          <option value="欧美">欧美</option>
+                          <option value="印度">印度</option>
+                          <option value="泰国">泰国</option>
+                          <option value="台湾">台湾</option>
+                          <option value="香港">香港</option>
+                        </select>
+                      </div>
+                    </div>
+                    <div class="item form-group">
+                      <label class="control-label col-md-3 col-sm-3 col-xs-12" for="language">语言: <span
+                              class="required">*</span>
+                      </label>
+                      <div class="col-md-6 col-sm-6 col-xs-12">
+                        <select class="form-control" form="input_box" name="tv_language" id="language">
+                          <option value="英语">英语</option>
+                          <option value="中文">中文</option>
+                          <option value="韩语">韩语</option>
+                          <option value="日语">日语</option>
+                          <option value="法语">法语</option>
+                          <option value="俄语">俄语</option>
+
+                        </select>
+                      </div>
+                    </div>
+                    <div class="item form-group">
+                      <label class="control-label col-md-3 col-sm-3 col-xs-12" for="state">状态: <span
+                              class="required">*</span>
+                      </label>
+                      <div class="col-md-6 col-sm-6 col-xs-12">
+                        <input type="text" id="state" name="tv_state" required
+                               class="form-control col-md-7 col-xs-12" , placeholder="状态" minlength="1" maxlength="50">
+                      </div>
+                    </div>
+                    <div class="item form-group">
+                      <label class="control-label col-md-3 col-sm-3 col-xs-12" for="image_path">图片地址: <span
+                              class="required">*</span>
+                      </label>
+                      <div class="col-md-6 col-sm-6 col-xs-12">
+                        <input type="file" id="image_path" name="tv_image_path" required
+                               class="form-control col-md-7 col-xs-12" , placeholder="图片地址">
+                      </div>
+                    </div>
+                    <div class="item form-group">
+                      <label class="control-label col-md-3 col-sm-3 col-xs-12" for="content">电视剧简介: <span
+                              class="required">*</span>
+                      </label>
+                      <div class="col-md-6 col-sm-6 col-xs-12">
+                    <textarea id="content" name="tv_content" required
+                              class="form-control col-md-7 col-xs-12" , placeholder="电视剧简介"></textarea>
+                      </div>
+                    </div>
+                  </form>
+                </div>
+                <div id="step2">
+
+                  <form id="input_box_2" href="/api/tv/add" \
+                        class="form-horizontal form-label-left" \
+                        method="post" \
+                        enctype="multipart/form-data">
+                    <span class="section">电视剧剧集信息:</span>
+
+                    <div class="item form-group">
+                      <label class="control-label col-md-3 col-sm-3 col-xs-12" for="tv_index">剧集ID: <span class="required">*</span>
+                      </label>
+                      <div class="col-md-6 col-sm-6 col-xs-12">
+                        <select class="form-control" form="input_box_2" name="tv_index" id="tv_index">
+                          <option value="1">1</option>
+                          <option value="1">2</option>
+                          <option value="1">3</option>
+                          <option value="1">4</option>
+                          <option value="1">5</option>
+                        </select>
+                      </div>
+                    </div>
+
+                    <div class="item form-group">
+                      <label class="control-label col-md-3 col-sm-3 col-xs-12" for="paly_url">视频播放地址: <span
+                              class="required">*</span>
+                      </label>
+                      <div class="col-md-2 col-sm-2 col-xs-12">
+                        <select class="form-control" form="input_box" name="play_url_video_type" id="video_type">
+                          <option value="video/mp4">MP4</option>
+                          <option value="application/vnd.apple.mpegurl">M3U8</option>
+                          <option value="video/flv">FLV</option>
+                          <option value="application/x-mpegURL">M3U8_EXT</option>
+                        </select>
+                      </div>
+                      <div class="col-md-2 col-sm-2 col-xs-12">
+                        <input type="text" id="paly_url" name="movie_play_url" required
+                               class="form-control col-md-7 col-xs-12"  placeholder="URL" minlength="1" maxlength="50">
+                      </div>
+                      <div class="col-md-2 col-sm-2 col-xs-12">
+                        <select class="form-control" form="input_box" name="play_url_video_choice" id="video_choice">
+                          <option value="标清">标清</option>
+                          <option value="高清">高清</option>
+                          <option value="超清">超清</option>
+                          <option value="1080P">1080P</option>
+                        </select>
+                      </div>
+
+                    </div>
+                  </form>
+                </div>
+              </div>
+          </div>
+
+
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-12 col-sm-12 col-xs-12">
+        <div class="x_panel">
+          <div class="x_title">
+            <h2>导入添加</h2>
+            <ul class="nav navbar-right panel_toolbox">
+              <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+              </li>
+              <li><a class="close-link"><i class="fa fa-close"></i></a>
+              </li>
+            </ul>
+            <div class="clearfix"></div>
+          </div>
+          <div class="x_content">
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% end %}
+{% block body_static %}
+
+<script src="{{static_url('extension/DateJS/build/date.js')}}"> </script>
+<script src="{{static_url('extension/moment/min/moment.min.js')}}"> </script>
+<script src="{{static_url('extension/bootstrap-daterangepicker/daterangepicker.js')}}"> </script>
+<script src="{{static_url('extension/parsleyjs/dist/parsley.min.js')}}"> </script>
+<script src="{{static_url('extension/jQuery-Smart-Wizard/js/jquery.smartWizard.js')}}"></script>
+<script> $('#input_box').parsley()</script>
+<script>
+  var step_var = { nextStepCallback:function (stepObj) {
+      var step_num = stepObj.attr('rel')
+      switch (step_num)
+      {
+          case 1:
+              $('.actionBar a.buttonPrevious').addClass('buttonDisabled');
+              $('.actionBar a.buttonNext').removeClass('buttonDisabled');
+              $('.actionBar a.buttonNext').attr("href", "/api/tv/add" );
+
+              $('.actionBar a.buttonFinish').addClass('buttonDisabled');
+              return true
+          case 2:
+              $('.actionBar a.buttonPrevious').removeClass('buttonDisabled');
+              $('.actionBar a.buttonNext').addClass('buttonDisabled');
+              $('.actionBar a.buttonFinish').removeClass('buttonDisabled');
+              $('.actionBar a.buttonFinish').attr("href", "/api/tv/add");
+      }
+  }, showStepCallback:function(stepOjb) { } }
+  $(function () {
+      $("#wizard").smartWizard({keyNavigation:false, onFinish:step_var.onSubmit
+          , onNextStep:step_var.nextStepCallback, onShowStep:step_var.showStepCallback});
+      $(".actionBar a").button();
+  })
+</script>
+{% end %}

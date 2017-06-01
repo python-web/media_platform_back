@@ -1,0 +1,108 @@
+{% extends "base.html" %}
+{% block header_title %} Home {% end %}
+{% block body %}
+<div class="container body">
+    <div class="main_container">
+        <div class="col-md-3 left_col">
+            <div class="left_col scroll-view">
+                <div class="navbar nav_title" style="border: 0;">
+                    <a href="#" class="site_title"> <span> 后台管理 </span></a>
+                </div>
+                <div class="clearfix"></div>
+                <!-- 用户信息-->
+                <div class="profile clearfix">
+                    <div class="profile_pic">
+                        <img src="{{static_url('custom/images/img.jpg')}}" alt="..." class="img-circle profile_img">
+                    </div>
+                    <div class="profile_info">
+                        <span>Welcome,</span>
+                        <h2>John Doe</h2>
+                    </div>
+                </div>
+
+                <br/>
+                <!-- slider bar-->
+                <div id="sidebar-menu" class="main_menu_side hidden-print main_menu">
+                    <div class="menu_section">
+                        <h3>General</h3><!-- 用户类型-->
+                        <ul class="nav side-menu">
+                            <li><a><i class="fa fa-home"></i> Home <span class="fa fa-chevron-down"></span></a></li>
+                            <li>
+                                <a><i class="fa fa-edit"></i> 电影管理 <span class="fa fa-chevron-down"></span></a>
+                                <ul class="nav child_menu">
+                                    <li><a href="/api/movie/info">电影信息面板</a></li>
+                                    <li><a href="/api/movie/add">添加电影</a></li>
+                                    <li><a href="/api/movie/del">删除电影</a></li>
+                                    <li><a href="/api/movie/alter">修改电影</a></li>
+                                    <li><a href="/api/movie/search">查找电影</a></li>
+                                </ul>
+                            </li>
+                            <li>
+                                <a><i class="fa fa-edit"></i> 电视剧管理 <span class="fa fa-chevron-down"></span></a>
+                                <ul class="nav child_menu">
+                                    <li><a href="/api/tv/add">添加电视剧</a></li>
+                                    <li><a href="/api/tv/del">删除电视剧</a></li>
+                                    <li><a href="/api/tv/alter">修改电视剧</a></li>
+                                    <li><a href="/api/tv/search">查找电视剧</a></li>
+                                </ul>
+                            </li>
+                            <li>
+                                <a><i class="fa fa-edit"></i> 动漫管理 <span class="fa fa-chevron-down"></span></a>
+                                <ul class="nav child_menu">
+                                    <li><a href="/api/cartoon/add">添加动漫</a></li>
+                                    <li><a href="/api/cartoon/del">删除动漫</a></li>
+                                    <li><a href="/api/cartoon/alter">修改动漫</a></li>
+                                    <li><a href="/api/cartoon/search">查找动漫</a></li>
+                                </ul>
+                            </li>
+                            <li>
+                                <a><i class="fa fa-edit"></i> 3D管理 <span class="fa fa-chevron-down"></span></a>
+                                <ul class="nav child_menu">
+                                    <li><a href="/api/3d/add">添加3D</a></li>
+                                    <li><a href="/api/3d/del">删除3D</a></li>
+                                    <li><a href="/api/3d/alter">修改3D</a></li>
+                                    <li><a href="/api/3d/search">查询3D</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        <div class="top_nav">
+            <div class="nav_menu">
+                <nav>
+                    <div class="nav toggle">
+                        <a id="menu_toggle"><i class="fa fa-bars"></i></a>
+                    </div>
+                    <div class="nav navbar-nav navbar-right">
+                        <!-- 用户信息-->
+                        <li class="">
+                            <a href="javascript:;" class="user-profile dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+                                <img src="{{static_url('custom/images/img.jpg')}}" alt="">John Doe
+                                <span class=" fa fa-angle-down"></span>
+                            </a>
+                            <ul class="dropdown-menu dropdown-usermenu pull-right">
+                                <li><a href="/api/user/profile"> Profile</a></li>
+                                <li>
+                                    <a href="javascript:;">
+                                        <span class="badge bg-red pull-right">50%</span>
+                                        <span>Settings</span>
+                                    </a>
+                                </li>
+                                <li><a href="/api/help">Help</a></li>
+                                <li><a href="/api/logout"><i class="fa fa-sign-out pull-right"></i> Log Out</a></li>
+                            </ul>
+                        </li>
+                    </div>
+                </nav>
+            </div>
+        </div>
+
+        {% block page_content %}
+        {% end %}
+
+    </div>
+</div>
+{% end %}

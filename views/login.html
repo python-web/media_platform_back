@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>{% block header_title %}登陆{% end %}</title>
+    <meta charset="utf-8" />
+    <meta name="renderer" content="webkit">
+    <link rel="stylesheet" href="{{ static_url('extension/bootstrap/dist/css/bootstrap.css') }}">
+    <link href="{{static_url('extension/nprogress/nprogress.css')}}" rel="stylesheet">
+    <!--<link rel="stylesheet" href="{{static_url('extension/bootstrap-daterangepicker/daterangepicker.css')}}">-->
+
+    <link rel="stylesheet" href="{{ static_url('extension/font-awesome/css/font-awesome.min.css')}}">
+
+    <link rel="stylesheet" href="{{static_url('extension/iCheck/skins/flat/green.css')}}">
+
+    <link rel="stylesheet" href="{{static_url('custom/css/custom.min.css')}}">
+    <link href="{{static_url('extension/animate.css/animate.min.css')}}" rel="stylesheet">
+
+
+    {% block header_static %}{% end %}
+</head>
+<body class="login">
+<header>
+    {% block header_nav %} {% end %}
+</header>
+
+<div>
+    <div class="login_wrapper">
+        <div class="animate form login_form">
+            <section class="login_content">
+                <form href="/login" method="post">
+                    {% module xsrf_form_html() %}
+                    <h1>登陆</h1>
+                    <div><input type="text" name="name" class="form-control" placeholder="用户名" required></div>
+                    <div><input type="password" name="password" class="form-control" placeholder="密码" required></div>
+                    <select class="form-control"  name="power" id="power">
+                        <option value="0">管理员</option>
+                        <option value="1">用户</option>
+                        <option value="2">访客</option>
+                    </select>
+                    <div class="clearfix"></div>
+
+                    <div>
+                        <button type="submit" class="btn btn-primary">登陆</button>
+                        <button id="send" type="submit" class="btn btn-success" >注册</button>
+                        <!--<a class="btn btn-default submit" href="/login"></a>-->
+                        <!--<a class="btn btn-default submit" href="/register"></a>-->
+                    </div>
+                </form>
+
+            </section>
+        </div>
+    </div>
+</div>
+<script src="{{static_url('extension/jquery/dist/jquery.min.js')}}"></script>
+<script src="{{static_url('extension/bootstrap/dist/js/bootstrap.min.js')}}"></script>
+<script src="{{static_url('extension/fastclick/lib/fastclick.js')}}"></script>
+<!-- NProgress -->
+<script src="{{static_url('extension/nprogress/nprogress.js')}}"></script>
+<script src="{{static_url('extension/iCheck/icheck.min.js')}}"></script>
+
+<script src="{{static_url('extension/skycons/skycons.js')}}"></script>
+
+{% block footer_static %}{% end %}
+
+{% block body %} {% end %}
+{% block body_static %} {% end %}
+<script src="{{static_url('custom/js/custom.min.js')}}"></script>
+</body>
+
+</html>

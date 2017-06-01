@@ -1,0 +1,107 @@
+{% extends "../header.html" %}
+{% block header_title %} Home {% end %}
+
+{% block page_content %}
+<div class="right_col" role="main">
+    <div class="">
+        <div class="page-title">
+            <div class="title_left">
+                <h3><i class="fa fa-film"></i> 电影删除</h3>
+            </div>
+        </div>
+        <div class="clearfix"></div>
+        <div class="row">
+            <div class="col-md-12 col-sm-12 col-xs-12">
+                <div class="x_panel">
+                    <div class="x_title">
+                        <h2>按电影ID删除</h2>
+                        <ul class="nav navbar-right panel_toolbox">
+                            <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+                            </li>
+                            <li><a class="close-link"><i class="fa fa-close"></i></a>
+                            </li>
+                        </ul>
+                        <div class="clearfix"></div>
+                    </div>
+                    <div class="x_content">
+                        <form id="input_box" href="/api/movie/del" \
+                              class="form-horizontal form-label-left" \
+                              method="post" enctype="multipart/form-data">
+                            <span class="section">影片ID信息:</span>
+
+                            <div class="item form-group">
+                                <label class="control-label col-md-3 col-sm-3 col-xs-12" for="id">ID: <span
+                                        class="required">*</span>
+                                </label>
+                                <div class="col-md-6 col-sm-6 col-xs-12">
+                                    <input type="text" id="id" name="movie_id" required="required"
+                                           class="form-control col-md-7 col-xs-12" , placeholder="电影ID">
+                                </div>
+                            </div>
+
+                            <div class="ln_solid"></div>
+                            <div class="form-group">
+                                <div class="col-md-6 col-md-offset-3">
+                                    <button class="btn btn-primary">取消</button>
+                                    <button id="send" type="submit" class="btn btn-success">确定</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12 col-sm-12 col-xs-12">
+                <div class="x_panel">
+                    <div class="x_title">
+                        <h2>按名字进行删除</h2>
+                        <ul class="nav navbar-right panel_toolbox">
+                            <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+                            </li>
+                            <li><a class="close-link"><i class="fa fa-close"></i></a>
+                            </li>
+                        </ul>
+                        <div class="clearfix"></div>
+                    </div>
+                    <div class="x_content">
+                        <form id="input_box_by_name" href="/api/movie/del" \
+                              class="form-horizontal form-label-left" \
+                              method="post" enctype="multipart/form-data">
+                            <span class="section">影片ID信息:</span>
+
+                            <div class="item form-group">
+                                <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">名称: <span
+                                        class="required">*</span>
+                                </label>
+                                <div class="col-md-6 col-sm-6 col-xs-12">
+                                    <input type="text" id="name" name="movie_name" required="required"
+                                           class="form-control col-md-7 col-xs-12" , placeholder="电影名称">
+                                </div>
+                            </div>
+
+                            <div class="ln_solid"></div>
+                            <div class="form-group">
+                                <div class="col-md-6 col-md-offset-3">
+                                    <button class="btn btn-primary">取消</button>
+                                    <button id="send_by_name" type="submit" class="btn btn-success">确定</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% end %}
+{% block body_static %}
+<script type="text/javascript">
+    var validator = new Validator('input_box', [], function (obj, evt) {
+    })
+
+</script>
+<script src="{{static_url('extension/validator/validator.js')}}"></script>
+{% end %}
